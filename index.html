@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>AlgoZenith</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: DM Sans;
+      background: linear-gradient(180deg, #FFFFFF 0%, #F1FBFF 100%);  
+    }
+
+    .main {
+      display: flex;
+    }
+
+    .sidebar {
+      
+      height: 98vh;
+      width: 17%;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .sidebar ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar li {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .sidebar li i {
+      margin-right: 10px;
+      font-size: 18px;
+    }
+
+    .sidebar li:hover {
+      background-color: #d9e6f2;
+    }
+
+    .content {
+      width: 80%;
+      /* Adjusted width */
+    }
+
+    .note {
+      height: 10%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .note .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #f0f0f0;
+      margin-left: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .note .icon i {
+      font-size: 15px;
+    }
+
+    .note .icon:hover {
+      background-color: #d9d9d9;
+    }
+
+    .rectangle {
+      width: 100%;
+      height: 100%;
+      border: 1px solid #A4E6FF;
+      border-radius: 10px 10px 0 0;
+      background: #FFFFFF;
+    }
+
+    .layer1 {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0.5rem;
+      width: 100%;
+      
+    }
+    
+    .pair {
+      display: flex;
+      gap: 15px; /* Slightly increased gap for better spacing */
+    }
+    
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px; /* Space between the icon and text */
+      width: 150px; /* Slightly increased width */
+      height: 35px;
+      box-shadow: 0px 4px 6px rgba(41, 83, 155, 0.3); /* Softer shadow */
+      border: 1px solid transparent;
+      border-radius: 8px; /* Rounded corners */
+      background: linear-gradient(135deg, #ffffff, #f0f4ff);
+      margin: 5px;
+      font-size: 14px;
+      color: #05445E; /* Matching text color */
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+      background: linear-gradient(135deg, #e0f7fa, #d1e9ff); /* Light gradient effect on hover */
+      transform: translateY(-3px); /* Lift effect */
+      box-shadow: 0px 6px 8px rgba(41, 83, 155, 0.4); /* Stronger shadow on hover */
+    }
+    
+    .end-btn {
+      flex-shrink: 0;
+      margin-right: 1.5rem;
+    }
+    
+    /* Styling icons */
+    .btn .icon {
+      font-size: 14px;
+      color: #05445E;
+    }
+        
+    .layer2 {
+      display: flex;
+      gap: 20px;
+      margin: 20px 0;
+      /* Added top and bottom margin */
+    }
+
+
+    
+
+    
+    .box1,
+    .box2 {
+      /* Ensures even distribution of space */
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid;
+      border-image-source: linear-gradient(180deg, rgba(164, 230, 255, 0) 12.84%, #A4E6FF 120.5%);
+    }
+
+    .box1{
+      display: flex;
+      margin: 0 2rem;
+      padding: 5px;
+      width: 28%;
+      border: Mixed solid;
+      border-image-source: linear-gradient(90deg, rgba(143, 223, 255, 0) 0%, #8FDFFF 49.99%, rgba(143, 223, 255, 0) 100%);
+    }
+
+    .box2{
+      width: 65%;
+      font-size: 14px;
+      margin: 0 1rem;
+    }
+
+    .box1 ul {
+      list-style-type: none;
+      width: 80%;
+      padding: 0;
+      margin: 0;
+    }
+
+    .box1 .ch-no {
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      margin: 5px 0;
+      background-color: #ffffff;
+      border-radius: 5px;
+      font-size: 16px;
+      color: #333;
+      cursor: pointer;
+      transition: background-color 0.3s, box-shadow 0.3s;
+  
+      /* New properties */
+      border-bottom: 0.5px solid; /* Define a solid border to use with border-image */
+      border-image-source: linear-gradient(90deg, rgba(143, 223, 255, 0) 0%, #8FDFFF 49.99%, rgba(143, 223, 255, 0) 100%);
+      border-image-slice: 1; /* Ensure the gradient is applied correctly */
+  }
+
+    .box1 .ch-no:hover {
+      background-color: #e6f7ff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    }
+
+    .subbox1 {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid; /* This will be overridden by border-image */
+      border-radius: 10px;
+      background-color: #FFFFFF; /* Updated background color */
+      border-image-source: linear-gradient(180deg, #A4E6FF -29.56%, rgba(164, 230, 255, 0) 120.5%);
+      border-image-slice: 1; /* Ensure the gradient is applied correctly */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: relative; /* Ensure relative positioning */
+}
+    
+    .desc {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .small-btn {
+      border: 1px solid #99E4FF;
+      background: #EFF5FF;
+      padding: 5px;
+      border-radius: 5px;
+      color: #333;
+      margin-left: 8rem; /* Pushes it to the right side */
+      text-align: center; /* Centers the text */
+    }
+
+    .head{
+      display: flex;
+      flex-direction: column;
+    }
+    .head p,
+    .head h6 {
+      margin: 0;
+      color: #555;
+    }
+    
+    .head h6 {
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .duration ul {
+      display: flex;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      gap: 10px;
+    }
+    
+    .duration li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+    
+    .icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+    
+    .progress {
+      height: 5px;
+      background: #EFF5FF;
+      border-radius: 5px;
+      position: absolute; /* Ensure it's positioned relative to .subbox1 */
+      bottom: 0; /* Attach to the bottom */
+      left: 0;
+      right: 0;
+      overflow: hidden;
+    }
+    
+    .progress::after {
+      content: '';
+      display: block;
+      height: 100%;
+      width: 45%; /* Adjust as needed */
+      background: #172B4DD9;
+      border-radius: 5px 0 0 5px;
+    }
+    
+    
+
+    .boxes {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+      border-width: 0px; /* No actual border width */
+      border-style: solid;
+      border-image-source: linear-gradient(90deg, rgba(23, 43, 77, 0) 0%, #172B4D 49.54%, rgba(5, 68, 94, 0) 100%);
+      border-image-slice: 1; /* Ensure the gradient is used for the border */
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      white-space: nowrap; /* Prevent line breaks */
+    }
+
+    .boxes img{
+      height: 14px;
+      width: 14px;
+    }
+    
+    .boxes p {
+      margin: 0;
+      font-size: 14px;
+      color: #333;
+    }
+    
+    .ch-one {
+      display: flex;
+      align-items: center; /* Vertically align items */
+      gap: 10px; /* Optional: Add spacing between child elements */
+    }
+    
+    .boxes-container {
+      display: none;
+    }
+    
+    .boxes-container.show {
+      display: block;
+    }
+    
+    .video-popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60%;
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    
+    .video-popup .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    
+
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <div class="sidebar">
+      <ul>
+        <li>
+          <img src="./Menu.png" alt="AlgoZenith Icon" class="icon">
+          <span style="font-size: 24px; color: #172B4D; font-weight: bold;">AlgoZenith</span>
+      </li>
+        <li><img src="./ViewGridOutline.png" alt="Dashboard Icon" class="icon"> Dashboard</li>
+        <li><img src="./LightBulbOutline.png" alt="Learn Icon" class="icon"> Learn</li>
+        <li><img src="./UserGroupOutline.png" alt="Forums Icon" class="icon"> Forums</li>
+        <li ><img src="./ClipboardOutline.png" alt="Upskill Icon" class="icon" > Upskill</li>
+        <li><img src="./ChartBarOutline.png" alt="Contest Icon" class="icon"> Contest</li>
+        <li><img src="./StarOutline.png" alt="Leaderboard Icon" class="icon"> Leadboard</li>
+      </ul>
+    </div>    
+    <div class="content">
+      <div class="note">
+      
+        <!-- Other Icons -->
+        <div class="icon bell" style="border-radius: 10px;  background: #E7F8FF;
+        ">
+          <i class="fas fa-bell"></i>
+        </div>
+        <div class="icon profile">
+          <i class="fas fa-user"></i>
+        </div>
+      </div>
+      
+      <div class="rectangle">
+        <div class="layer1">
+          <div class="pair">
+            <div class="btn">
+              <img src="./CalendarOutline.png" alt="Mentor Session Icon" class="icon"> Mentor Session
+            </div>
+            <div class="btn">
+              <img src="./BriefcaseOutline.png" alt="Learning Material Icon" class="icon"> Learning Material
+            </div>
+          </div>
+          <div class="btn end-btn">
+            <img src="./InformationCircleOutline.png" alt="How it Works Icon" class="icon"> How it works
+          </div>
+        </div>
+        
+        
+        <div class="layer2">
+          <div class="box1">
+            <ul>
+              <li class="ch-no" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 15px; margin: 5px 0;   color: #333; cursor: pointer;
+              ">
+                Chapter 1
+                <div style="display: flex; align-items: center;">
+                    <img src="./ClockOutline.png" alt="Clock Icon" class="icon" style="width: 20px; height: 20px; margin-right: 5px;">
+                    2:00:00
+                </div>
+            </li>
+              <li class="ch-no">Chapter 2</li>
+              <li class="ch-no">Chapter 3</li>
+              <li class="ch-no">Chapter 4</li>
+              <li class="ch-no">Chapter 5</li>
+            </ul>
+          </div>
+          <div class="box2">
+            <div class="subbox1" style="margin-bottom: 0.5rem;">
+              <div class="desc">
+                <div class="head">
+                  <p>PART 1</p>
+                  <h6>Lorem ipsum dolor sit amet</h6>
+                </div>
+                <div class="other">
+                  <div class="duration">
+                    <ul>
+                      <li><img src="./ClockOutline.png" alt="Clock Icon" class="icon"> 2:00:00</li>
+                      <li><img src="./ChartBarOutline.png" alt="Medium Icon" class="icon"> Medium</li>
+                      <li><img src="./DocumentDuplicateOutline.png" alt="Score Icon" class="icon"> 5</li>
+                      <li class="toggle-arrow" onclick="toggleBoxes()">
+                        <img id="arrow-icon" style="height: 10px; width: 15px;" src="./Vector-down.png" alt="Score Icon" class="icon">
+                      </li>                      
+                    </ul>                    
+                  </div>
+                  <div class="small-btn">45% completed</div>
+                </div>
+              </div>
+              <div class="progress"></div>
+            </div>
+            
+            <div class="boxes-container">
+              <div class="boxes" onclick="openVideo('https:\/\/www.youtube.com\/embed\/s0fGZdNiql0?si=oL8YA6bdirYXDsox')">
+                <p><img src="./PlayOutline.png" alt="Video Icon" class="icon"> Video 1</p>
+                <p><img src="./ClockOutline.png" alt="Clock Icon" class="icon"> 2:00</p>
+              </div>              
+              <div class="boxes">
+                <p><img src="./QuestionMarkCircleOutline.png" alt="Article Icon" class="icon"> Article 1</p>
+                <p><img src="./ClockOutline.png" alt="Clock Icon" class="icon"> 2:00</p>
+              </div>
+              <div class="boxes">
+                <p><img src="./QuestionMarkCircleOutline.png" alt="Quiz Icon" class="icon"> Quiz 1</p>
+                <p><img src="./ClockOutline.png" alt="Clock Icon" class="icon"> 2:00</p>
+              </div>
+              <div class="boxes">
+                <p><img src="./CodeOutline.png" alt="Project Icon" class="icon">Coding Exercise 1</p>
+                <p><img src="./ClockOutline.png" alt="Clock Icon" class="icon"> 2:00</p>
+              </div>
+              <div class="boxes">
+                <p><img src="./DocumentDuplicateOutline.png" alt="Project Icon" class="icon">Combined Resource 1</p>
+                <p><img src="./ClockOutline.png" alt="Clock Icon" class="icon"> 2:00</p>
+              </div>
+            </div>
+
+            
+            
+            
+
+            <div class="subbox1" style="margin-bottom: 0.5rem; ">
+              <div class="desc">
+                <div class="head">
+                  <p>PART 2</p>
+                  <h6>Lorem ipsum dolor sit amet</h6>
+                </div>
+                <div class="other">
+                  <div class="duration">
+                    <ul>
+                      <li><img src="./ClockOutline.png" alt="Clock Icon" class="icon"> 2:00:00</li>
+                      <li><img src="./ChartBarOutline.png" alt="Medium Icon" class="icon"> Medium</li>
+                      <li><img src="./DocumentDuplicateOutline.png" alt="Score Icon" class="icon"> 12</li>
+                      <li class="toggle-arrow">
+                        <img id="arrow-icon" style="height: 10px; width: 15px;" src="./Vector-down.png" alt="Score Icon" class="icon">
+                      </li>                      
+                    </ul>                    
+                  </div>
+                  <div class="small-btn">35% completed</div>
+                </div>
+              </div>
+              <div class="progress" style="width: 35%; "></div>
+            </div>
+
+            
+
+            
+
+            <div class="subbox1" style="margin-bottom: 0.5rem;">
+              <div class="desc">
+                <div class="head">
+                  <p>PART 3</p>
+                  <h6>Lorem ipsum dolor sit amet</h6>
+                </div>
+                <div class="other">
+                  <div class="duration">
+                    <ul>
+                      <li><img src="./ClockOutline.png" alt="Clock Icon" class="icon"> 2:00:00</li>
+                      <li><img src="./ChartBarOutline.png" alt="Medium Icon" class="icon"> Medium</li>
+                      <li><img src="./DocumentDuplicateOutline.png" alt="Score Icon" class="icon"> 12</li>
+                      <li class="toggle-arrow" >
+                        <img id="arrow-icon" style="height: 10px; width: 15px;" src="./Vector-down.png" alt="Score Icon" class="icon">
+                      </li>                      
+                    </ul>                    
+                  </div>
+                  <div class="small-btn">0% completed</div>
+                </div>
+              </div>
+              <div class="progress" style="width: 0; "></div>
+            </div>
+
+            <div class="video-popup" id="videoPopup">
+              <span class="close" onclick="closeVideo()">×</span>
+              <iframe id="videoFrame" width="560" height="315" 
+              src="https://www.youtube.com/embed/s0fGZdNiql0?si=oL8YA6bdirYXDsox"
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+              </iframe>
+            </div>
+    
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function toggleBoxes() {
+      const boxesContainer = document.querySelector('.boxes-container');
+      const arrowIcon = document.getElementById('arrow-icon');
+    
+      if (boxesContainer.classList.contains('show')) {
+        boxesContainer.classList.remove('show');
+        arrowIcon.src = './Vector-down.png'; // Set to down arrow image
+      } else {
+        boxesContainer.classList.add('show');
+        arrowIcon.src = './Vector-up.png'; // Set to up arrow image
+      }
+    }    
+
+    function openVideo(videoUrl) {
+      document.getElementById('videoFrame').src = videoUrl;
+      document.getElementById('videoPopup').style.display = 'block';
+    }
+    
+    function closeVideo() {
+      document.getElementById('videoFrame').src = ''; // Stop the video
+      document.getElementById('videoPopup').style.display = 'none';
+    }
+    
+    
+  </script>
+</body>
+
+</html>
